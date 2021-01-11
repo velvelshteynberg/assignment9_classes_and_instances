@@ -15,15 +15,14 @@ class Player
     end 
 
     def restart
-        gold_coins = 0
-        health_points = 10
-        live = 5
+        @gold_coins = 0
+        @health_points = 10
+        @live = 5
     end 
 
     # Your class should have an instance method called level_up that increases lives by one.
     def level_up
-        lives = @lives + 1
-        return lives
+        @lives = @lives +1
         if lives == 0
             return restart
         end 
@@ -32,8 +31,7 @@ class Player
 # Your class should have an instance method called collect_treasure that increases gold_coins by one. 
 #If gold_coins is a multiple of ten (eg, 10, 20, 30, and so on) then the collect_treasure method should run the level_up method.
     def collect_treasure
-        gold_coins = @gold_coins +1
-        return gold_coins
+        @gold_coins = @gold_coins + 1
         if gold_coins % 10 == 0 
             return level_up
         end
@@ -44,10 +42,11 @@ class Player
 #If you have run out of lives, this method should run another method called restart (see below)
 # The restart instance method should set all attributes back to their starting values (5, 0, and 10).
     def do_battle
-        return  health_points = @health_points - 1
+        health_points = @health_points - 1
         if health_points < 1
-           return lives = @lives - 1
-            return health_points += 10
+           @lives = @lives - 1
+            @lives
+            @health_points += 10
         end 
     end 
 
@@ -61,6 +60,7 @@ player1 = Player.new(gold_coins, health_points, lives)
 p "========================="
 
 p player1.level_up
+p player1
 
 
 p "========================="
