@@ -4,10 +4,10 @@
 #They get paid $0.25 for every paper they deliver and $0.50 for every paper over their quota. 
 #If at the end of the day they haven't met their quota, they lose $2.
 
-quota = 50
-experience = 50
-earnings = 0 
 class Paperboy
+
+quota = 50
+total_houses_delivered_to = 0
 
 # Name
 # Experience (the number of papers they've delivered)
@@ -18,7 +18,8 @@ class Paperboy
         @earnings = earnings
     end 
 
-# quota
+
+        # quota
 # This method should calculate and return the paperboy's quota for his next delivery
 # The minimum number of papers to deliver is 50. 
 #The quota is calculated as half of your experience added to the minimum. 
@@ -30,6 +31,8 @@ class Paperboy
         return quota
     end 
 
+
+
 # deliver(start_address, end_address)
 # This method will take two house numbers and return the amount of money earned on this delivery as a floating point number. 
 #It should also update the paperboy's experience!
@@ -38,14 +41,17 @@ class Paperboy
     def deliver(start_address, end_address)
         total_houses = end_address - start_address
         new_earnings = (total_houses.abs.to_f/4.0)
-        return new_earnings
+        return "$#{new_earnings}"
+        @experience += total_houses.abs.
     end 
+
+
 
 # This method should return a string about the paperboy's performance
 # e.g. "I'm Tommy, I've delivered 90 papers and I've earned $38.25 so far!"
     def performance
-        return "I'm #{@name}, I've delivered #{quota} papers and I've earned #{deliver(quota , 0)} so far!"
-end 
+        "I'm #{@name}, I've delivered #{@experience} papers and I've earned #{@earnings} so far!"
+    end 
 
 end 
 
@@ -71,9 +77,13 @@ end
 # tommy.report # => "I'm Tommy, I've been delivered 135 papers and I've earned $34.25 so far!"
 
 
-Tommy = Paperboy.new("Tommy", experience, earnings)
-p Tommy
+tommy = Paperboy.new("tommy", 0, 0)
+p tommy
 
-p Tommy.quota
-p Tommy.deliver(50, 100)
-p Tommy.performance
+p tommy.quota
+p "============================="
+p tommy.deliver(50, 100)
+p "============================="
+p tommy.quota
+p "============================="
+p tommy.performance
