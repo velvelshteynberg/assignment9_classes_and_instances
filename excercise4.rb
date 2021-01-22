@@ -6,16 +6,16 @@
 
 class Paperboy
 
-quota = 50
-total_houses_delivered_to = 0
+# quota = 50
+# experience = 0
 
 # Name
 # Experience (the number of papers they've delivered)
 # Earnings (amount of money they've earned)
-    def initialize(name, experience, earnings)
+    def initialize(name)
         @name = name
-        @experience = experience 
-        @earnings = earnings
+        @experience = 0
+        @earnings = 0
     end 
 
 
@@ -42,7 +42,7 @@ total_houses_delivered_to = 0
         total_houses = end_address - start_address
         new_earnings = (total_houses.abs.to_f/4.0)
         return "$#{new_earnings}"
-        @experience += total_houses.abs.
+        @experience += total_houses.abs
     end 
 
 
@@ -52,8 +52,8 @@ total_houses_delivered_to = 0
     def performance
         "I'm #{@name}, I've delivered #{@experience} papers and I've earned #{@earnings} so far!"
     end 
-
 end 
+ 
 
 # Each paperboy should have at least these methods:
 
@@ -77,7 +77,7 @@ end
 # tommy.report # => "I'm Tommy, I've been delivered 135 papers and I've earned $34.25 so far!"
 
 
-tommy = Paperboy.new("tommy", 0, 0)
+tommy = Paperboy.new("tommy")
 p tommy
 
 p tommy.quota
